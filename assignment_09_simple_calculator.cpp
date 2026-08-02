@@ -73,3 +73,71 @@
 #include <cmath>
 using namespace std;
 
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b, bool& success) {
+    if (b == 0) {
+        success = false;
+        return 0;
+    }
+    success = true;
+    return a / b;
+}
+
+double modulus(double a, double b, bool& success) {
+    if (b == 0) {
+        success = false;
+        return 0;
+    }
+    success = true;
+    return static_cast<int>(a) % static_cast<int>(b);
+}
+
+double exponentiate(double base, double exponent) {
+    return pow(base, exponent);
+}
+
+void printMenu() {
+    cout << "=======================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "=======================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+    cout << "Select an operation (1-7): ";
+}
+
+int main() {
+    int choice;
+    bool running = true;
+
+    cout << fixed << setprecision(2);
+
+    while (running) {
+        printMenu();
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            running = false;
+            continue;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Error: Invalid choice. Please enter 1-7." << endl << endl;
+            continue;
+        }
